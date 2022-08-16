@@ -1,6 +1,3 @@
-from re import search
-
-
 class Node:
     def __init__(self, val_):
         self.val = val_
