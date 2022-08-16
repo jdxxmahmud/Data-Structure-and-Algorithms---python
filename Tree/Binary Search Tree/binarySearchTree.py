@@ -1,3 +1,6 @@
+from re import search
+
+
 class Node:
     def __init__(self, val_):
         self.val = val_
@@ -38,6 +41,18 @@ def inorder(node):
         print(node.val)
         inorder(node.right)
 
+def findMin(node):
+    if node.left is None:
+        return node
+    
+    return findMin(node.left)
+
+def findMax(node):
+    if node.right is None:
+        return node
+    
+    return findMax(node.right)
+
 root = insertNode(root, 5)
 root = insertNode(root, 6)
 root = insertNode(root, 2)
@@ -48,5 +63,14 @@ root = insertNode(root, 4)
 inorder(root)
 
 # finding the required node
-requiredNode = searchValue(root, 20)
-print(f"The required value is: {requiredNode.val}" if requiredNode.val else "Value not Found")
+searchNumber = 20
+requiredNode = searchValue(root, searchNumber)
+searchNumber = 10
+requiredNode = searchValue(root, searchNumber)
+
+print(f"The required value is: {requiredNode.val} at address {requiredNode}" \
+        if requiredNode.val else f"Value {searchNumber} not Found")
+
+minValue = findMin(root)
+maxValue = findMax(root)
+print(f"Min Value: {minValue.val}, Max Value: {maxValue.val}")
