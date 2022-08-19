@@ -18,7 +18,8 @@ class LinkedList:
             print(root.val)
             root = root.next
 
-root = LinkedList.insertNode(None, 2)
+root = None
+root = LinkedList.insertNode(root, 2)
 root = LinkedList.insertNode(root, 4)
 root = LinkedList.insertNode(root, 10)
 root = LinkedList.insertNode(root, 12)
