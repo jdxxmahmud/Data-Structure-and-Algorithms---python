@@ -38,7 +38,6 @@ class LinkedList:
 
     def insert(self, position, val):
         currentPosition = 0
-
         if position == 1:
             newNode = Node(val)
             newNode.next = self.head
