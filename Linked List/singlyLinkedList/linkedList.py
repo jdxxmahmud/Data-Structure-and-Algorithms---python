@@ -95,5 +95,19 @@ class LinkedList:
 
         self.head = newNode
 
+    def popFirst(self):
+        if self.head is None:
+            print("Linked List empty, can not pop")
+            return None
+        else:
+            poppedNode = self.head
+            self.head = self.head.next or None
+            return poppedNode
+
 
 myLL = LinkedList()
+myLL.append(5)
+myLL.printList()
+poppedNode = myLL.popFirst()
+print(f"Popped Node: {poppedNode.val}")
+myLL.printList()
