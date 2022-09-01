@@ -23,18 +23,24 @@ class LinkedList:
         while temp:
             print(temp.val, end=" => ")
             temp = temp.next
-
         print()
 
     def append(self, val):
+        newNode = Node(val)
         if self.head is None:
-            temp = Node(val)
-            self.head = temp
-            self.tail = temp
+            self.head = newNode
         else:
-            newNode = Node(val)
             self.tail.next = newNode
-            self.tail = newNode
+
+        self.tail = newNode
+
+    def findLength(self):
+        currentLength = 0
+        currentNode = self.head
+        while currentNode:
+            currentLength += 1
+            currentNode = currentNode.next
+        return currentLength
 
     def insert(self, position, val):
         if position == 1:
@@ -58,7 +64,7 @@ class LinkedList:
 
             print("Not that many elements, so appending")
             self.append(val)
-        self.append(val)
+
 
 myLL = LinkedList(5)
 myLL.append(6)
@@ -74,3 +80,5 @@ print("Tail: ", myLL.tail.val)
 myLL.insert(1, 125)
 myLL.printList()
 print("Head: ", myLL.head.val)
+
+print(f"Current length of linked list is: {myLL.findLength()}")
