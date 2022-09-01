@@ -37,16 +37,14 @@ class LinkedList:
             self.tail = newNode
 
     def insert(self, position, val):
-        currentPosition = 0
         if position == 1:
             newNode = Node(val)
             newNode.next = self.head
             self.head = newNode
             return
-        if self.head is None:
-            self.append(val)
-        else:
+        if self.head is not None:
             currentNode = self.head
+            currentPosition = 0
             while currentNode is not None:
                 if currentPosition == position - 2:
                     newNode = Node(val)
@@ -60,7 +58,7 @@ class LinkedList:
 
             print("Not that many elements, so appending")
             self.append(val)
-
+        self.append(val)
 
 myLL = LinkedList(5)
 myLL.append(6)
