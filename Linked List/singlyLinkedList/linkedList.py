@@ -104,10 +104,37 @@ class LinkedList:
             self.head = self.head.next or None
             return poppedNode
 
+    def remove(self, val):
+        if self.head.val == val:
+            return self.popFirst()
+
+        prevNode = self.head
+        currentNode = self.head
+        while currentNode.next:
+            if currentNode.val == val:
+                deletedNode = currentNode
+                prevNode.next = currentNode.next
+                return deletedNode
+            prevNode = currentNode
+            currentNode = currentNode.next
+
+        print("Value not found")
+        return None
+
 
 myLL = LinkedList()
 myLL.append(5)
+myLL.append(2)
+myLL.append(6)
+myLL.append(7)
+myLL.append(1)
+
 myLL.printList()
 poppedNode = myLL.popFirst()
 print(f"Popped Node: {poppedNode.val}")
+deletedNode = myLL.remove(6)
+print(f"Deleted: {deletedNode.val}" or "Failed")
+
+deletedNode = myLL.remove(2)
+print(f"Deleted: {deletedNode.val}" or "Failed")
 myLL.printList()
