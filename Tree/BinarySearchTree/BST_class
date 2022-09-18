@@ -1,0 +1,127 @@
+import numpy as np
+from collections import deque
+
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+class BST:
+    # The BST will be initiated with an empty root
+    def __init__(self):
+        self.root = None
+
+    def insert(self, val):
+        newNode = Node(val)
+        if self.root is None:
+            self.root = newNode
+            return True
+
+        temp = self.root
+
+        while True:
+            if newNode.val == temp.val:
+                return False
+            elif newNode.val < temp.val:
+                if temp.left is None:
+                    temp.left = newNode
+                    return True
+                temp = temp.left
+            else:
+                if temp.right is None:
+                    temp.right = newNode
+                    return True
+                temp = temp.right
+
+    def contains(self, val):
+        temp = self.root
+        while temp is not None:
+            if val < temp.val:
+                temp = temp.left
+            elif val > temp.val:
+                temp = temp.right
+            else:
+                return True
+
+        return False
+
+    def minimumVal(self, currentNode):
+        while currentNode is not None:
+            currenotNode = currentNode.left
+
+        return currentNode
+
+    def dfs_preOrder(self):
+        result = []
+
+        def preOrder(node):
+            result.append(node.val)
+            if node.left:
+                preOrder(node.left)
+            if node.right:
+                preOrder(node.right)
+
+        preOrder(self.root)
+
+        return result
+
+    def dfs_inOrder(self):
+        result = []
+
+        def inOrder(node):
+            if node.left:
+                inOrder(node.left)
+            result.append(node.val)
+            if node.right:
+                inOrder(node.right)
+        inOrder(self.root)
+
+        return result
+
+    def dfs_postOrder(self):
+        result = []
+
+        def postOrder(node):
+            if node.left:
+                postOrder(node.left)
+            if node.right:
+                postOrder(node.right)
+            result.append(node.val)
+
+        postOrder(self.root)
+        return result
+
+    def BFS(self):
+        currNode = self.root
+        queue = deque()
+        result = []
+        queue.append(currNode)
+
+        while len(queue) > 0:
+            currNode = queue.popleft()
+            result.append(currNode.val)
+
+            if currNode.left:
+                queue.append(currNode.left)
+            if currNode.right:
+                queue.append(currNode.right)
+
+        return result
+
+
+bsTree = BST()
+
+# if anyone wanys to generate random array, uncomment the following line
+# array = np.random.randint(1, 100, 10)
+array = [23  9 72 12 21 13 25 78 66 72]
+print(array)
+bsTree = BST()
+for num in array:
+    bsTree.insert(num)
+print(f"Inorder Traversal: {list(bsTree.dfs_inOrder())}")
+print(f"preorder Traversal: {list(bsTree.dfs_preOrder())}")
+print(f"postorder Traversal: {list(bsTree.dfs_postOrder())}")
+print(f"BFS: {bsTree.BFS()}")
