@@ -1,3 +1,7 @@
+from more_itertools import before_and_after
+from requests import head
+
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -112,15 +116,54 @@ class LinkedList:
         currentNode = self.head
         while currentNode.next:
             if currentNode.val == val:
-                deletedNode = currentNode
                 prevNode.next = currentNode.next
-                return deletedNode
+                return currentNode
             prevNode = currentNode
             currentNode = currentNode.next
 
         print("Value not found")
         return None
 
+    def getValByIndex(self, index):
+        if index < 0:
+            print("Negative index is not valid")
+            return None
+        temp = self.head
+
+        for _ in range(index):
+            print(temp.val)
+            if temp.next is None:
+                print("Index out of range")
+                return None
+            temp = temp.next
+
+        return temp
+
+    def setVal(self, index, val):
+        pass
+
+    def insert(self, index, val):
+        pass
+    
+    def removeByIndex(self, val):
+        pass
+    
+    def removeByIndex(self, index):
+        pass
+    
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        
+        prev = None
+        after = temp.next
+        
+        while temp:
+            after = temp.next
+            temp.next = prev
+            prev = temp
+            temp = after
 
 myLL = LinkedList()
 myLL.append(5)
@@ -130,11 +173,16 @@ myLL.append(7)
 myLL.append(1)
 
 myLL.printList()
-poppedNode = myLL.popFirst()
-print(f"Popped Node: {poppedNode.val}")
-deletedNode = myLL.remove(6)
-print(f"Deleted: {deletedNode.val}" or "Failed")
+# poppedNode = myLL.popFirst()
+# print(f"Popped Node: {poppedNode.val}")
+# deletedNode = myLL.remove(6)
+# print(f"Deleted: {deletedNode.val}" or "Failed")
 
-deletedNode = myLL.remove(2)
-print(f"Deleted: {deletedNode.val}" or "Failed")
+# deletedNode = myLL.remove(2)
+# print(f"Deleted: {deletedNode.val}" or "Failed")
+myLL.printList()
+
+getNode = myLL.getValByIndex(5)
+
+myLL.reverse()
 myLL.printList()

@@ -116,7 +116,7 @@ bsTree = BST()
 
 # if anyone wanys to generate random array, uncomment the following line
 # array = np.random.randint(1, 100, 10)
-array = [23  9 72 12 21 13 25 78 66 72]
+array = [23, 9, 72, 12, 21, 13, 25, 78, 66, 72, ]
 print(array)
 bsTree = BST()
 for num in array:
