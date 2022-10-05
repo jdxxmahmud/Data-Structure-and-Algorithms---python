@@ -31,14 +31,14 @@ class DoublyLinkedList:
             newNode.prev = tail
 
         self.tail = newNode
-        
+
         # Returning true
         # so that this can be
         # used in other node
         return True
-    
+
     def pop(self):
-        
+
         if self.head is None:
             return None
         elif self.head == self.tail:
@@ -50,11 +50,8 @@ class DoublyLinkedList:
             self.tail = self.tail.prev
             self.tail.next = Node
             poppedNode.prev = None
-            
-        return poppedNode   
-    
-        
-    
+
+        return poppedNode
 
 
 myDLL = DoublyLinkedList(15)
