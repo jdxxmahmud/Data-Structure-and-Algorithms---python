@@ -21,20 +21,18 @@ def merge(list1, list2):
             j += 1
         
     ''' 
-    This loop will run when list2 does not 
-    have any element to put in the combined list
+    If the list2 does not have any element left
+    then the rest of list1 will directly be entered
     '''
-    while i < len(list1):
-        combined.append(list1[i])
-        i += 1
+    if i < len(list1):
+        combined += list1[i:]
     
     '''
-    This loop will run when list1 is done entering
-    elements in combined list
+    If the list1 does not have any element left
+    then the rest of list2 will directly be entered
     '''    
-    while j < len(list2):
-        combined.append(list2[j])
-        j += 1
+    if j < len(list2):
+        combined += list2[j:]
         
     return combined
 
