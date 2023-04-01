@@ -1,17 +1,15 @@
-'''
-This function is going to merge two sorted list
-into one sorted list. 
-'''
 
+# * Function to merge two sorted lists
 def merge(list1, list2):
     combined = []
     
     i = 0
     j = 0
     
+    ''' 
+    *! This loop will run when both the lists have elements
+    to put in the combined list
     '''
-    This loop will run when both the lists have elements
-    to put in the combined list'''
     while i < len(list1) and j < len(list2):
         if list1[i] < list2[j]:
             combined.append(list1[i])
